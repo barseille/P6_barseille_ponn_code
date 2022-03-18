@@ -6,7 +6,10 @@ const fs = require("fs");
 // ajouter une sauce : POST
 exports.createSauce = (req, res, next) => {
   // récupérer les champs dans le corps de la requête
-  const sauceObject = JSON.parse(req.body.sauce); //delete sauceObject._id; // nouvelle instance de Sauce
+  const sauceObject = JSON.parse(req.body.sauce);
+  delete sauceObject._id;
+
+  // nouvelle instance de Sauce
   const sauce = new Sauce({
     ...sauceObject, // résolution de l'URL de l'image
     imageUrl: `${req.protocol}://${req.get("host")}/images/${

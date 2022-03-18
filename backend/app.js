@@ -5,6 +5,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
+const path = require('path');
+
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.5mma3.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
@@ -28,9 +30,14 @@ app.use((req, res, next) => {
 });
 
 const sauces = require("./models/sauces");
+
+
+
 app.use(cors());
 app.use(express.json());
 app.use("/api/sauces", sauceRoutes);
+
 app.use("/api/auth", userRoutes);
+app.use('/images',express.static(path.join(__dirname,'images')))
 
 module.exports = app;
