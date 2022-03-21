@@ -10,7 +10,7 @@ const User = require("../models/user");
 // middleware avec fonction signup
 exports.signup = (req, res, next) => {
   bcrypt
-    .hash(req.body.password, 10) //nb de fois
+    .hash(req.body.password, 10) // 10 tours
     .then((hash) => {
       const user = new User({
         email: req.body.email,

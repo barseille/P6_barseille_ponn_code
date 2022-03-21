@@ -22,7 +22,7 @@ exports.createSauce = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// modifier une sauce PUT avec méthode updateOne
+// modifier une sauce / PUT avec méthode updateOne
 exports.modifySauce = (req, res, next) => {
   // opérateur ternaire pour vérifier si fichier image existe ou non
   const sauceObject = req.file
@@ -71,7 +71,7 @@ exports.deleteSauce = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-// récupérer une seule sauce avec méthode findOne
+// récupérer une seule sauce avec méthode findOne de mongoose
 exports.getOneSauce = (req, res, next) => {
   Sauce.findOne({
     _id: req.params.id,
@@ -86,7 +86,7 @@ exports.getOneSauce = (req, res, next) => {
     });
 };
 
-// récupérer toutes les sauces avec methode find
+// récupérer toutes les sauces avec methode find de mongoose
 exports.getAllSauces = (req, res, next) => {
   Sauce.find()
     .then((sauces) => {

@@ -1,4 +1,6 @@
 const express = require("express");
+
+// création de router
 const router = express.Router();
 
 const userCtrl = require("../controllers/user");
