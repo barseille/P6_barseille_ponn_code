@@ -12,4 +12,4 @@ VARIABLES ENVIRONNEMENTALES Le fichier .env fournit les variables environnementa
 
 DB_USERNAME DB_PASSWORD DB_NAME.
 
-Traduit avec www.DeepL.com/Translator (version gratuite)
+
