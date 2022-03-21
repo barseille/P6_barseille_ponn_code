@@ -5,10 +5,13 @@ module.exports = (req, res, next) => {
   try {
     // récupère le token dans le header authorization
     // split retourne un tableau avec bearer en 0 et le token en 1
-    const token = req.headers.authorization.split(" ")[1]; // il nous retourne le token en 2eme élément en cas d'erreur
-    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET"); // récupère le userId du token
-    const userId = decodedToken.userId; // ajout de l'userId du token à l'objet requête
-    req.auth = { userId }; // vérifier que le userId de la requête correspond à celui du token
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    // récupère le userId du token
+    const userId = decodedToken.userId;
+    // ajout de l'userId du token à l'objet requête
+    req.auth = { userId };
+    // vérifier que le userId de la requête correspond à celui du token
     if (req.body.userId && req.body.userId !== userId) {
       throw "User ID non valable";
     } else {

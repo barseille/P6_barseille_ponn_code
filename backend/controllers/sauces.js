@@ -1,6 +1,6 @@
 // import du modèle de Sauce
 const Sauce = require("../models/sauces");
-// import de file system
+// import de file system :  Il nous donne accès aux fonctions qui nous permettent de modifier le système de fichiers
 const fs = require("fs");
 
 // ajouter une sauce : POST
@@ -22,7 +22,7 @@ exports.createSauce = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// modifier une sauce / PUT avec méthode updateOne
+// modifier une sauce PUT avec méthode updateOne
 exports.modifySauce = (req, res, next) => {
   // opérateur ternaire pour vérifier si fichier image existe ou non
   const sauceObject = req.file
@@ -61,7 +61,8 @@ exports.deleteSauce = (req, res, next) => {
     })
     .then((sauce) => {
       // récupère le nom de fichier
-      const filename = sauce.imageUrl.split("/images/")[1]; // supprime le fichier puis effectue le callback qui supprime de la BDD
+      const filename = sauce.imageUrl.split("/images/")[1]; 
+      // supprime le fichier puis effectue le callback qui supprime de la BDD
       fs.unlink(`images/${filename}`, () => {
         Sauce.deleteOne({ _id: req.params.id })
           .then(() => res.status(200).json({ message: "Sauce supprimée !" }))
