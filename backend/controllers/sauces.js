@@ -24,7 +24,7 @@ exports.createSauce = (req, res, next) => {
 
 // modifier une sauce PUT avec méthode updateOne
 exports.modifySauce = (req, res, next) => {
-  // opérateur ternaire pour vérifier si fichier image existe ou non
+  // pour vérifier si fichier image existe ou non
   const sauceObject = req.file
     ? {
         ...JSON.parse(req.body.sauce),

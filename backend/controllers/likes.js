@@ -9,6 +9,8 @@ exports.likeSauce = (req, res, next) => {
   const sauceId = req.params.id;
   // récupère le userId
   const userId = req.body.userId;
+
+  
   switch (likeStatus) {
     // ajout d'un like
     case 1:
