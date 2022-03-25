@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     // récupère le token dans le header authorization
     // split retourne un tableau avec bearer en 0 et le token en 1
     const token = req.headers.authorization.split(" ")[1];
-    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
     // récupère le userId du token
     const userId = decodedToken.userId;
     // ajout de l'userId du token à l'objet requête
