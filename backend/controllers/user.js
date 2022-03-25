@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 // import du modèle User
 const User = require("../models/user");
 
-// middleware avec fonction signup
+// fonction signup pour enregistrement de nouvelles utilisateurs
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10) // nb de fois
@@ -24,7 +24,7 @@ exports.signup = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-// middleware avec fonction login (connexion)
+// fonction login pour connecter des utilisateurs existants
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email }) // trouve l'utilisateur dans la BDD
     .then((user) => {
@@ -43,7 +43,7 @@ exports.login = (req, res, next) => {
             userId: user._id,
             token: jwt.sign(
               { userId: user._id }, //le mm utilisateur
-              "RANDOM_TOKEN_SECRET",
+              "BARSEILLE_TOKEN_SECRET",
               { expiresIn: "24h" }
             ),
           });
