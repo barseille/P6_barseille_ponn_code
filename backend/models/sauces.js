@@ -13,7 +13,7 @@ const sauceSchema = mongoose.Schema({
   //gestion des likes et dislikes
   likes: { type: Number, default: 0 },
   dislikes: { type: Number, default: 0 },
-  usersLiked: { type: Array, default: [] },
+  usersLiked: { type: Array, default: [] },  // like attribué à chaque utilisateur
   usersDisliked: { type: Array, default: [] },
 });
 
