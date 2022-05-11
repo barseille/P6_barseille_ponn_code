@@ -16,7 +16,7 @@
 
 1 - Pré-requis :
 
-- Installer Node.js
+- Installer Node.js / Créer un compte sur MongoDB Atlas
 
 2 - Déploiement
 
